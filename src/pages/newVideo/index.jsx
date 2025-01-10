@@ -1,6 +1,8 @@
+import Header from "../../components/Header"
+
 const NewVideo = () => {
     return <>
-        <h1>New video</h1>
+    <Header color="#000"/>
     </>
 }
 

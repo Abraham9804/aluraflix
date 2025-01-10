@@ -1,7 +1,10 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import './App.css'
 import AppRoutes from './routes'
-import Header from './components/Header'
+import Banner from './components/Banner'
+import Footer from './components/Footer'
+import Videos from './components/Videos'
+//import Header from './components/Header'
 
 function App() {
   
@@ -9,8 +12,12 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
+        
         <AppRoutes />
+        <Banner/>
+        <Videos/>
+        <Footer />
+
       </Router>
       
     </>
