@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const BannerStyles = styled.section`
     width: 100%;
-    height: 650px;
+    height: 850px;
 
     img{
         width: 100%;
