@@ -8,7 +8,6 @@ const HeaderStyles = styled.header`
     display: flex;
     justify-content: space-between;
     border-bottom: 5px solid #2271D1;
-    box-shadow: 0px 100px 50px #3c9221  ;
     div{
         padding: 42.5px 51px;
     }
