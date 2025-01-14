@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Card from "../card"
 import styled from "styled-components"
+import { VideoContext } from "../../context/Contexto"
 
 const SectionStyles = styled.section`
     width: 100%;
-    height: 435px;
+    min-height: 435px;
     margin-bottom: 93px;
 
     h2{
         display: flex;
-        width: 30%;
+        max-width: 432px;
+        min-width: 286px;
         background-color: ${props => props.$color};
-        font-size: 900;
+        font-weight: 700;
         font-size: 32px;
         color: white;
         border-radius: 15px;
@@ -21,15 +23,31 @@ const SectionStyles = styled.section`
     }
     .cardContainer{
         display: flex;
+        flex-wrap: wrap;
         margin-top: 42px;
         gap: 30px;
     }
 
+    @media screen and (max-width: 768px) {
+        min-height: auto;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 93px;
+        h2{
+            margin: auto;
+            min-width: 286px;
+            font-size: 28px;
+        }
+
+        .cardContainer{
+            justify-content: center;
+        }
+    }
     
 `
 
 const Section = ({categoria}) => {
-
+    const {fetchVideosPorCategoria, videos} = useContext(VideoContext)
     const colorMap = {
         "Front End" : "#6BD1FF",
         "Back End" : "#00C86F",
@@ -38,22 +56,19 @@ const Section = ({categoria}) => {
 
     let color = colorMap[categoria];
 
-    const [videos, setVideos] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5001/videos?categoria=${categoria}`)
-        .then(response => response.json())
-        .then(data => setVideos(data))
-        .catch(error => console.log(error))
+        fetchVideosPorCategoria(categoria)
     },[])
+
+    const videosCategoria = videos[categoria] || []
 
     return (
         <SectionStyles  $color={color}>
             <h2>{categoria}</h2>
             <div className="cardContainer">
-                {videos.map(video => <Card key={video.id} nombre={video.titulo} imagen={video.capa}></Card>)}
+                {videosCategoria.map(video => <Card key={video.id} nombre={video.titulo} imagen={video.capa} color={color}></Card>)}
             </div>
             
-
         </SectionStyles>
     )
 }

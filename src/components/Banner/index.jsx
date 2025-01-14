@@ -2,8 +2,8 @@ import styled from "styled-components"
 
 const BannerStyles = styled.section`
     width: 100%;
-    height: 850px;
-
+    height:auto;
+    margin-bottom: 100px;
     img{
         width: 100%;
         height: 100%;
@@ -13,7 +13,7 @@ const BannerStyles = styled.section`
 
 const Banner = () => {
     return <BannerStyles>
-                <img src="/img/banner2.jpg" />
+                <img src="/img/banner.png" />
             </BannerStyles>
 }
 

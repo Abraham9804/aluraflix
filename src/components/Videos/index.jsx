@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Secction from "../Section"
 import styled from "styled-components"
+import { VideoContext } from "../../context/Contexto"
 
 const MainStyles = styled.main`
     width: 95%;
@@ -9,27 +10,13 @@ const MainStyles = styled.main`
 `
 
 const Videos = () => {
-    const [categorias, setCategorias] = useState([])
-    useEffect(()=>{
-        fetch("http://localhost:3000/videos")
-        .then(response => response.json())
-        .then(data => {
-           const catRepetidas = data.map(video => video.categoria )
-           const catUnicas = [...new Set(catRepetidas)]
-           return setCategorias(catUnicas)
-        })
-        .catch(error => console.log(error))
-    },[])
-
-
+    const {categorias} = useContext(VideoContext)
     
     return (
         <MainStyles>
-        
-        {
-            categorias.map(categoria => <Secction key={categoria} categoria={categoria}></Secction>)
-        }
-        
+            {
+                categorias.map(categoria => <Secction key={categoria} categoria={categoria}></Secction>)
+            }
         </MainStyles>
     )
 }

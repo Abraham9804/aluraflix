@@ -3,10 +3,11 @@ import styled from "styled-components"
 
 const HeaderStyles = styled.header`
     width: 100%;
-    height: 125px;
+    min-height: 125px;
     background-color: ${props => props.$color};
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     border-bottom: 5px solid #2271D1;
     div{
         padding: 42.5px 51px;
