@@ -14,7 +14,9 @@ function App() {
     <>
       <Router>
         <ContextProvider>
+        <Header color="#262626"/>
           <AppRoutes />
+          
         </ContextProvider>
         <Footer />
 

@@ -4,7 +4,7 @@ import Videos from "../../components/Videos"
 
 const Home = () => {
     return <>
-            <Header color="#262626"/>
+            
             <Banner/>
             <Videos/>
         </>

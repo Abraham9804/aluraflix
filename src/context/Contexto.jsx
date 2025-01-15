@@ -5,7 +5,7 @@ export const VideoContext = createContext()
 const VideoProvider = ({children}) => {
     const [categorias, setCategorias] = useState([])
     useEffect(()=>{
-        fetch("http://localhost:3000/videos")
+        fetch("http://localhost:5001/videos")
         .then(response => response.json())
         .then(data => {
            const catRepetidas = data.map(video => video.categoria )
@@ -14,7 +14,7 @@ const VideoProvider = ({children}) => {
         })
         .catch(error => console.log(error))
     },[])
-
+    
     const [videos, setVideos] = useState({})
     function fetchVideosPorCategoria(categoria){
         fetch(`http://localhost:5001/videos?categoria=${categoria}`)
