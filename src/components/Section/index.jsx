@@ -66,7 +66,7 @@ const Section = ({categoria}) => {
         <SectionStyles  $color={color}>
             <h2>{categoria}</h2>
             <div className="cardContainer">
-                {videosCategoria.map(video => <Card key={video.id} nombre={video.titulo} imagen={video.capa} color={color}></Card>)}
+                {videosCategoria.map(video => <Card key={video.id} nombre={video.titulo} imagen={video.capa} color={color} id={video.id}></Card>)}
             </div>
             
         </SectionStyles>

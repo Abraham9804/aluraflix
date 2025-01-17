@@ -1,31 +1,26 @@
-{"videos":[
+{
+  "videos": [
     {
-        "id": 1,
-        "titulo": "Como utilizar el Display block, inline, inline-block",
-        "capa": "/img/cards/img-front.png",
-        "link": "https://www.youtube.com/embed/AG2QssLpQzI?si=6Yn355wcxAqU7_Ld",
-        "categoria": "Front End"
+      "id": "2",
+      "titulo": "Productividad en el trabajo remoto",
+      "capa": "/img/cards/img-back.png",
+      "link": "https://www.youtube.com/embed/AULPtYo25Lw?si=UGdKX1NSrEcQ0jfn",
+      "categoria": "Back End"
     },
     {
-        "id": 2,
-        "titulo": "Productividad en el trabajo remoto",
-        "capa": "/img/cards/img-back.png",
-        "link": "https://www.youtube.com/embed/AULPtYo25Lw?si=UGdKX1NSrEcQ0jfn",
-         "categoria": "Back End"
+      "id": "3",
+      "titulo": "¿Cuáles son las principales áreas de la programación?",
+      "capa": "/img/cards/img-front1.png",
+      "link": "https://www.youtube.com/embed/03cxUlwLVt4?si=zVCUQNO-eS2RZQTO",
+      "categoria": "Front End"
     },
     {
-        "id": 3,
-        "titulo": "¿Cuáles son las principales áreas de la programación?",
-        "capa": "/img/cards/img-front1.png",
-        "link": "https://www.youtube.com/embed/03cxUlwLVt4?si=zVCUQNO-eS2RZQTO",
-         "categoria": "Front End"
-    },
-    {
-        "id": 4,
-        "titulo": "Detección de intruso con IA",
-        "capa": "/img/cards/img-inova.png",
-        "link": "https://www.youtube.com/embed/5T_Q_NtNLZE?si=M7D0JeagaKqsoaFs",
-        "categoria": "Innovacion y gestión"
+      "id": "7e19",
+      "titulo": "Como utilizar el Display block, inline, inline-block",
+      "capa": "/img/cards/img-front.png",
+      "categoria": "Front End",
+      "link": "https://www.youtube.com/embed/AG2QssLpQzI?si=6Yn355wcxAqU7_Ld",
+      "descripcion": "video frontend"
     }
-]
+  ]
 }

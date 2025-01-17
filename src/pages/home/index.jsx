@@ -1,5 +1,6 @@
 import Banner from "../../components/Banner"
 import Header from "../../components/Header"
+import ModalEdit from "../../components/ModalEdit"
 import Videos from "../../components/Videos"
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
             
             <Banner/>
             <Videos/>
+            <ModalEdit/>
         </>
 }
 

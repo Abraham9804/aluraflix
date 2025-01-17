@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const VideoContext = createContext()
 
+
 const VideoProvider = ({children}) => {
     const [categorias, setCategorias] = useState([])
     useEffect(()=>{
@@ -28,12 +29,25 @@ const VideoProvider = ({children}) => {
         .catch(error => console.log(error))
     }
 
-    useEffect(()=>{
-        console.log(videos)
-    },[videos])
-    
+    //Estados para el modal
+    const [videoSelect, setVideoSelect] = useState({})
+    const [openModal, setOpenModal] = useState(false)
 
-    return <VideoContext.Provider value={{categorias, fetchVideosPorCategoria, videos}}>
+    const fetchVideo = async (id) => {
+        try{
+            const searchVideo = await fetch(`http://localhost:5001/videos?id=${id}`)
+            if(!searchVideo.ok){
+                throw new Error("Error al buscar el video")
+            }
+            const SearchVideoJson = await searchVideo.json()
+            setVideoSelect(SearchVideoJson)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
+    return <VideoContext.Provider value={{categorias, fetchVideosPorCategoria, videos, videoSelect, setVideoSelect, openModal, setOpenModal, fetchVideo}}>
             {children}
         </VideoContext.Provider>
 }
