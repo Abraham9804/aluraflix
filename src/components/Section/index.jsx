@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react"
-import Card from "../card"
+
 import styled from "styled-components"
 import { VideoContext } from "../../context/Contexto"
+import Card from "../Card"
 
 const SectionStyles = styled.section`
     width: 100%;

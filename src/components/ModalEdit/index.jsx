@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { VideoContext } from "../../context/Contexto"
 import styled from "styled-components"
+import CampoTexto from "../CampoTexto"
 
 const Overlay = styled.div`
     position: fixed;
@@ -23,10 +24,12 @@ const DialogStyles = styled.dialog`
     h3{
         color: #2271D1;
         font-size: 60px;
-        text-align: center;
+        text-align: left;
+        margin-bottom: 43px;
     }
 
     div{
+        width: 100%;
         display: flex;
         justify-content: space-between;
         button{
@@ -47,11 +50,57 @@ const DialogStyles = styled.dialog`
             border: 3px solid var(--white);
         }
     }
+
+    .text-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 43px;
+        label{
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        textarea{
+            border-radius: 10px;
+            border: 3px solid #2271D1;
+            padding: 16px 10px;
+            background-color: transparent;
+            color: #A5A5A5;
+        }
+    }
+
+    .select-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 43px;
+        label{
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        select{
+            border-radius: 10px;
+            border: 3px solid #2271D1;
+            padding: 16px 10px;
+            background-color: transparent;
+            color: #A5A5A5;
+        }
+        option{
+            background-color: #03122F;
+            border: 3px solid #2271D1;
+        }
+    }
     
 `
 
 const ModalEdit = () => {
-    const {videoSelect,setVideoSelect, openModal, setOpenModal} = useContext(VideoContext)
+    const {videoSelect,setVideoSelect, openModal, setOpenModal, categorias} = useContext(VideoContext)
     
     const video = videoSelect[0]
 
@@ -61,8 +110,31 @@ const ModalEdit = () => {
             <> 
            <Overlay />
             <DialogStyles open={openModal}>
-                    <h3>Editar card: {video.id}</h3>
+                    <h3>Editar card:</h3>
                     <form method="dialog">
+                    <CampoTexto value={video.titulo} titulo="Titulo" campoDb="titulo"/>
+                    <div className="select-container">
+                        <label htmlFor="categoria">Categoria</label>
+                        <select name="categoria" id="categoria" defaultValue={video.categoria}
+                        placeholder={video.categoria}>
+                            
+                            {
+                                categorias.map(categoria => {
+                                    return <option key={categoria} value={categoria}>{categoria}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+                    <CampoTexto value={video.capa} titulo="Imagen" campoDb="capa"/>
+                    <CampoTexto value={video.link} titulo="Video" campoDb="link"/>
+                    
+                    <div className="text-container">
+                        <label>Descripción</label>
+                        <textarea id="descripcion" name="descripcion">
+                        {video.descripcion}
+                        </textarea>
+                    </div>
+                    
                         <div>
                             <button className="btn-guardar">GUARDAR</button>
                             <button className="btn-cerrar" onClick={() => {
@@ -71,7 +143,6 @@ const ModalEdit = () => {
                             }
                             }>CERRAR</button>
                         </div>
-                        
                     </form>
             </DialogStyles>
             </>

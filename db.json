@@ -21,6 +21,14 @@
       "categoria": "Front End",
       "link": "https://www.youtube.com/embed/AG2QssLpQzI?si=6Yn355wcxAqU7_Ld",
       "descripcion": "video frontend"
+    },
+    {
+      "id": "c762",
+      "titulo": "Soft Skills",
+      "capa": "img/cards/img-inova.png",
+      "categoria": "Innovacion y gestión",
+      "link": "https://www.youtube.com/embed/AG2QssLpQzI?si=6Yn355wcxAqU7_Ld",
+      "descripcion": "Innovacion"
     }
   ]
 }
