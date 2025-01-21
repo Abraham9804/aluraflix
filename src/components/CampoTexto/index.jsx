@@ -22,10 +22,10 @@ const ContainerCampo = styled.div`
 
 `
 
-const CampoTexto = ({value, titulo, campoDb}) => {
+const CampoTexto = ({value, titulo, campoDb, onChange}) => {
     return <ContainerCampo>
                 <label htmlFor={campoDb} >{titulo}</label>
-                <input type="text" id={campoDb} name={campoDb} value={value}  />
+                <input type="text" id={campoDb} name={campoDb} value={value}  onChange={onChange}/>
             </ContainerCampo>
 }
 

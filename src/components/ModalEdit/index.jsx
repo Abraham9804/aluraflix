@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { VideoContext } from "../../context/Contexto"
 import styled from "styled-components"
 import CampoTexto from "../CampoTexto"
@@ -64,6 +64,7 @@ const DialogStyles = styled.dialog`
         }
 
         textarea{
+            height: 112px;
             border-radius: 10px;
             border: 3px solid #2271D1;
             padding: 16px 10px;
@@ -131,6 +132,62 @@ const ModalEdit = () => {
     
     const video = videoSelect[0]
 
+    const [videoEdit, setVideoEdit] = useState({
+        id:"",
+        titulo: "",
+        categoria: "",
+        capa: "",
+        link: "",
+        descripcion: ""
+    })
+    
+    useEffect(()=>{
+        if(video){
+            setVideoEdit({
+                id: video.id,
+                titulo: video.titulo,
+                categoria: video.categoria,
+                capa: video.capa,
+                link: video.link,
+                descripcion: video.descripcion
+            }) 
+        }
+    },[video])
+
+
+    function handleChange(e){
+        const {name, value} = e.target 
+        setVideoEdit({
+            ...videoEdit,
+            [name]:value
+        })
+    }
+
+    async function handleSubmit(e){
+        e.preventDefault()
+        try{
+            const fetchUpdate = await fetch(`http://localhost:5001/videos/${video.id}`,{
+                                        method: "PUT",
+                                        headers: {
+                                            "Content-Type":"application/json"
+                                        },
+                                        body: JSON.stringify(videoEdit)
+                                    })
+                if(!fetchUpdate.ok){
+                    throw new Error("Error en la solicitud fetch")
+                }else{
+                    alert("Edicion exitosa")
+                    setOpenModal(false)
+                    setVideoSelect({})
+                }
+                const fetchUpdateJson = await fetchUpdate.json()
+                console.log(fetchUpdateJson)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
     return (
         <> 
         {video && 
@@ -138,29 +195,28 @@ const ModalEdit = () => {
            <Overlay />
             <DialogStyles open={openModal}>
                     <h3>Editar card:</h3>
-                    <form method="dialog">
-                    <CampoTexto value={video.titulo} titulo="Titulo" campoDb="titulo"/>
-                    <div className="select-container">
-                        <label htmlFor="categoria">Categoria</label>
-                        <select name="categoria" id="categoria" defaultValue={video.categoria}
-                        placeholder={video.categoria}>
-                            
-                            {
-                                categorias.map(categoria => {
-                                    return <option key={categoria} value={categoria}>{categoria}</option>
-                                })
-                            }
-                        </select>
-                    </div>
-                    <CampoTexto value={video.capa} titulo="Imagen" campoDb="capa"/>
-                    <CampoTexto value={video.link} titulo="Video" campoDb="link"/>
-                    
-                    <div className="text-container">
-                        <label>Descripción</label>
-                        <textarea id="descripcion" name="descripcion">
-                        {video.descripcion}
-                        </textarea>
-                    </div>
+                    <form method="dialog" onSubmit={handleSubmit}>
+                        <CampoTexto value={videoEdit.titulo} titulo="Titulo" campoDb="titulo" name="titulo" onChange={handleChange}/>
+                        <div className="select-container">
+                            <label htmlFor="categoria">Categoria</label>
+                            <select name="categoria" id="categoria" value={videoEdit.categoria}
+                             onChange={handleChange}>
+                                {
+                                    categorias.map(categoria => {
+                                        return <option key={categoria} value={categoria}>{categoria}</option>
+                                    })
+                                }
+                            </select>
+                        </div>
+                        <CampoTexto value={videoEdit.capa} titulo="Imagen" name="capa" campoDb="capa" onChange={handleChange}/>
+                        <CampoTexto value={videoEdit.link} titulo="Video" name="link" campoDb="link" onChange={handleChange}/>
+                        
+                        <div className="text-container">
+                            <label>Descripción</label>
+                            <textarea id="descripcion" name="descripcion" onChange={handleChange} value={videoEdit.descripcion}>
+                                
+                            </textarea>
+                        </div>
                     
                         <div>
                             <button className="btn-guardar">GUARDAR</button>

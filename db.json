@@ -3,16 +3,18 @@
     {
       "id": "2",
       "titulo": "Productividad en el trabajo remoto",
+      "categoria": "Back End",
       "capa": "/img/cards/img-back.png",
       "link": "https://www.youtube.com/embed/AULPtYo25Lw?si=UGdKX1NSrEcQ0jfn",
-      "categoria": "Back End"
+      "descripcion": ""
     },
     {
       "id": "3",
       "titulo": "¿Cuáles son las principales áreas de la programación?",
       "capa": "/img/cards/img-front1.png",
       "link": "https://www.youtube.com/embed/03cxUlwLVt4?si=zVCUQNO-eS2RZQTO",
-      "categoria": "Front End"
+      "categoria": "Front End",
+      "descripcion": "Front End"
     },
     {
       "id": "7e19",
@@ -25,8 +27,8 @@
     {
       "id": "c762",
       "titulo": "Soft Skills",
-      "capa": "img/cards/img-inova.png",
       "categoria": "Innovacion y gestión",
+      "capa": "img/cards/img-inova.png",
       "link": "https://www.youtube.com/embed/AG2QssLpQzI?si=6Yn355wcxAqU7_Ld",
       "descripcion": "Innovacion"
     }
