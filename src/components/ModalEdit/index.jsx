@@ -96,6 +96,33 @@ const DialogStyles = styled.dialog`
             border: 3px solid #2271D1;
         }
     }
+
+    @media screen and (max-width: 1000px){
+        padding: 84px 100px;
+    }
+
+    @media screen and (max-width: 600px){
+        padding: 84px 60px;
+    }
+
+    @media screen and (max-width: 600px){
+        padding: 84px 20px;
+        div{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            button{
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+        h3{
+            text-align: center;
+            font-size: 40px;
+        }
+    }
     
 `
 
